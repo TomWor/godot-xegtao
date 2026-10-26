@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dimjttfw2vyhv"
+path="res://.godot/imported/xe_gtao_prefilter_depths.glsl-bd4b550d9200410a54e18942a665062c.res"
+
+[deps]
+
+source_file="res://addons/xe_gtao/shaders/xe_gtao_prefilter_depths.glsl"
+dest_files=["res://.godot/imported/xe_gtao_prefilter_depths.glsl-bd4b550d9200410a54e18942a665062c.res"]
+
+[params]
+

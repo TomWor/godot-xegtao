@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://b6o6sqy8ywiaw"
+path="res://.godot/imported/xe_gtao_main.glsl-49f10e0db08cd40fdc9905389e1a2d12.res"
+
+[deps]
+
+source_file="res://addons/xe_gtao/shaders/xe_gtao_main.glsl"
+dest_files=["res://.godot/imported/xe_gtao_main.glsl-49f10e0db08cd40fdc9905389e1a2d12.res"]
+
+[params]
+

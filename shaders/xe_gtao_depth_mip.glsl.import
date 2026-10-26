@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://biic0f61voogw"
+path="res://.godot/imported/xe_gtao_depth_mip.glsl-d362d837b9374250cd194f333288822d.res"
+
+[deps]
+
+source_file="res://addons/xe_gtao/shaders/xe_gtao_depth_mip.glsl"
+dest_files=["res://.godot/imported/xe_gtao_depth_mip.glsl-d362d837b9374250cd194f333288822d.res"]
+
+[params]
+
