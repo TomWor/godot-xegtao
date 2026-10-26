@@ -2,9 +2,10 @@
 #version 450
 
 // XeGTAO denoiser: an edge-aware 3x3 blur driven by the depth edges of the
-// main pass. The last pass restores the occlusion term's scale. Port of
-// XeGTAO's XeGTAO_Denoise, one pixel per invocation (Copyright (C) 2016-2021,
-// Intel Corporation, MIT licence, see LICENSE.XeGTAO.txt).
+// main pass. The last pass restores the occlusion term's scale and applies
+// the intensity. Port of XeGTAO's XeGTAO_Denoise, one pixel per invocation
+// (Copyright (C) 2016-2021, Intel Corporation, MIT licence, see
+// LICENSE.XeGTAO.txt).
 
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
@@ -16,6 +17,10 @@ layout(push_constant, std430) uniform Params {
 	ivec2 size;
 	float blur_beta;
 	uint final_apply;
+	float intensity;
+	float pad0;
+	float pad1;
+	float pad2;
 } params;
 
 #define XE_GTAO_OCCLUSION_TERM_SCALE 1.5
@@ -81,7 +86,7 @@ void main() {
 
 	float visibility = sum / sum_weight;
 	if (final_apply) {
-		visibility *= XE_GTAO_OCCLUSION_TERM_SCALE;
+		visibility = mix(1.0, visibility * XE_GTAO_OCCLUSION_TERM_SCALE, params.intensity);
 	}
 	imageStore(out_ao, pixel, vec4(clamp(visibility, 0.0, 1.0)));
 }

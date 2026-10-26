@@ -19,8 +19,7 @@ layout(set = 0, binding = 3, std140) uniform SceneDataBlock {
 
 layout(push_constant, std430) uniform Params {
 	ivec2 size;
-	float intensity;
-	float pad;
+	vec2 pad;
 } params;
 
 float view_depth(float buffer_depth) {
@@ -38,8 +37,9 @@ void main() {
 	if (texelFetch(viewspace_depth, pixel, 0).r >= far_depth * 0.999) {
 		return;
 	}
+	// The denoiser has applied the intensity.
 	float ao = texelFetch(ao_texture, pixel, 0).r;
 	vec4 color = imageLoad(color_image, pixel);
-	color.rgb *= mix(1.0, ao, params.intensity);
+	color.rgb *= ao;
 	imageStore(color_image, pixel, color);
 }
